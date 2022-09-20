@@ -1,23 +1,30 @@
 grammar impl;
 
-start   : command* EOF;
+start   : hardware inputs outputs latches* updates assignment* simulate* EOF;
 
-command : function
-      |  expr
-;
 
-block : '{' command* '}'
-      | command
-      ;
 
-expr : '!' expr
+expr : '(' expr ')'
+     | '!' expr
      | expr '&&' expr
      | expr '||' expr
      | CONST
      | IDENTIFIER
      ;
-function : '.'expr+
+hardware : '.hardware' IDENTIFIER+
 ;
+inputs : '.inputs' IDENTIFIER+
+;
+outputs : '.outputs' IDENTIFIER+;
+latches : '.latch' IDENTIFIER '->' IDENTIFIER
+;
+updates : '.update';
+
+assignment : expr '=' expr;
+
+simulate : '.simulate' assignment*;
+
+
 
 IDENTIFIER : [a-zA-Z_] [a-zA-Z0-9_]*;
 
