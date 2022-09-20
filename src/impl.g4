@@ -1,12 +1,23 @@
 grammar impl;
 
-start   : expr* EOF;
+start   : command* EOF;
+
+command : IDENTIFIER '=' expr ';'
+	| 'while' '(' condition ')' block 
+	;
+	
+block : '{' command* '}'
+      | command
+      ;
+
+condition : expr ('>'|'<'|'=='|'!=') expr ;
 
 expr : expr ('*'|'/') expr
-    | expr ('+'|'-') expr
-    | CONST
-    ;
-
+     | expr ('+'|'-') expr
+     | '(' expr ')'
+     | CONST
+     | IDENTIFIER
+     ;
 
 IDENTIFIER : [a-zA-Z_] [a-zA-Z0-9_]*;
 
