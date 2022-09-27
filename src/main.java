@@ -10,7 +10,7 @@ public class main {
 	// we expect exactly one argument: the name of the input file
 	if (args.length!=1) {
 	    System.err.println("\n");
-	    System.err.println("Impl Interpreter\n");
+	    System.err.println("Traffic Light Interpreter\n");
 	    System.err.println("=================\n\n");
 	    System.err.println("Please give as input argument a filename\n");
 	    System.exit(-1);
@@ -22,13 +22,13 @@ public class main {
 	    //new ANTLRFileStream (filename); // depricated
 	
 	// create a lexer/scanner
-	implLexer lex = new implLexer(input);
+	lightLexer lex = new lightLexer(input);
 	
 	// get the stream of tokens from the scanner
 	CommonTokenStream tokens = new CommonTokenStream(lex);
 	
 	// create a parser
-	implParser parser = new implParser(tokens);
+	lightParser parser = new lightParser(tokens);
 	
 	// and parse anything from the grammar for "start"
 	ParseTree parseTree = parser.start();
@@ -44,9 +44,9 @@ public class main {
 // This is parameterized over a return type "<T>" which is in our case
 // simply a Double.
 
-class Interpreter extends AbstractParseTreeVisitor<Double> implements implVisitor<Double> {
+class Interpreter extends AbstractParseTreeVisitor<Double> implements lightVisitor<Double> {
 
-    public Double visitStart(implParser.StartContext ctx){return null;};
+    public Double visitStart(lightParser.StartContext ctx){return null;};
     //public Double visitExpr(implParser.ExprContext ctx){return null;};
 
 }

@@ -1,15 +1,15 @@
 antlr4 = java org.antlr.v4.Tool
 grun = java org.antlr.v4.gui.TestRig
 SRCFILES = main.java
-GENERATED = implParser.java implBaseVisitor.java implVisitor.java implLexer.java
+GENERATED = lightParser.java lightBaseVisitor.java lightVisitor.java lightLexer.java
 
 all:
 	make tree
 
-main.class:	$(SRCFILES) $(GENERATED) impl.g4
+main.class:	$(SRCFILES) $(GENERATED) light.g4
 	javac  $(SRCFILES) $(GENERATED)
 
-implLexer.java:	impl.g4
+implLexer.java:	light.g4
 	$(antlr4) -visitor impl.g4
 
 implLexer.class: implLexer.java
@@ -18,5 +18,5 @@ implLexer.class: implLexer.java
 test:	main.class input.txt
 	java main input.txt
 
-tree:	implLexer.class impl.g4 input.txt
+tree:	implLexer.class light.g4 input.txt
 	$(grun) impl start -gui -tokens input.txt
