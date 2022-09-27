@@ -80,10 +80,11 @@ class Or extends  Condition{
         return e1.eval(env) || e2.eval(env);
     };
 
+class Less extends Condition{
+    Expr e1,e2;
+    Less(Expr e1, Expr e2){this.e1=e1; this.e2=e2;}
+    public Boolean eval(Environment env){
+        return e1.eval(env) < e2.eval(env);
+    }
+}
 
-
-// 3*(y+1)
-/* 
-Expr e= new Multiplication(new Constant(3),
-                           new Addition(new Variable("y"),
-			                new Constant(1))) */

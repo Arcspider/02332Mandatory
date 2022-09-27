@@ -2,19 +2,19 @@ grammar light;
 
 start : hardware inputs outputs latches update rules* simulate* EOF;
 
-hardware: '.hardware' IDENTIFIER ;
+hardware: '.hardware' name=IDENTIFIER ;
 
-inputs: '.inputs' IDENTIFIER*;
+inputs: '.inputs' name=IDENTIFIER*;
 
-outputs: '.outputs' IDENTIFIER*;
+outputs: '.outputs' name=IDENTIFIER*;
 
 latches: '.latch' latchOP;
 
-rules: IDENTIFIER '=' expr;
+rules: name=IDENTIFIER '=' expr;
 
 update: '.update';
 
-latchOP : IDENTIFIER '->' IDENTIFIER;
+latchOP : name1=IDENTIFIER '->' name2=IDENTIFIER;
 
 simulate: '.simulate' rules expr*;
 
@@ -25,9 +25,9 @@ block : '{' command* '}'
       | command
       ;
 
-expr : '!' expr
-     | expr '&&' expr
-     | expr '||' expr
+expr : '!' e1=expr
+     | e1=expr '&&' e2=expr
+     | e1=expr '||' e2=expr
      | c=CONST
      | x=IDENTIFIER
      ;
