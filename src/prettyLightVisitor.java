@@ -31,7 +31,7 @@ public class prettyLightVisitor implements lightVisitor {
 
     @Override
     public AST visitRules(lightParser.RulesContext ctx) {
-        return null;
+        return visitChildren(ctx);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class prettyLightVisitor implements lightVisitor {
 
     @Override
     public AST visitLatchOP(lightParser.LatchOPContext ctx) {
-        return null;
+        return new Sequence((Command)visit(ctx.name1),(Command)visit(ctx.name2));
     }
 
     @Override
