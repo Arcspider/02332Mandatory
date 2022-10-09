@@ -1,4 +1,4 @@
-// Generated from C:/Users/soren/IdeaProjects/02332Mandatory/src\light.g4 by ANTLR 4.10.1
+// Generated from C:/Users/hayda/Documents/IntelliJ/02332Mandatory/src\light.g4 by ANTLR 4.10.1
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -123,37 +123,61 @@ public class lightBaseListener implements lightListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCommand(lightParser.CommandContext ctx) { }
+	@Override public void enterNot(lightParser.NotContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCommand(lightParser.CommandContext ctx) { }
+	@Override public void exitNot(lightParser.NotContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBlock(lightParser.BlockContext ctx) { }
+	@Override public void enterVariable(lightParser.VariableContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBlock(lightParser.BlockContext ctx) { }
+	@Override public void exitVariable(lightParser.VariableContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpr(lightParser.ExprContext ctx) { }
+	@Override public void enterOr(lightParser.OrContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExpr(lightParser.ExprContext ctx) { }
+	@Override public void exitOr(lightParser.OrContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterConstant(lightParser.ConstantContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitConstant(lightParser.ConstantContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAnd(lightParser.AndContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAnd(lightParser.AndContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

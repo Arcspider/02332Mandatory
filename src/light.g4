@@ -18,18 +18,12 @@ latchOP : name1=IDENTIFIER '->' name2=IDENTIFIER;
 
 simulate: '.simulate' rules expr*;
 
-command : expr
-;
 
-block : '{' command* '}'
-      | command
-      ;
-
-expr : '!' e1=expr
-     | e1=expr '&&' e2=expr
-     | e1=expr '||' e2=expr
-     | c=CONST
-     | x=IDENTIFIER
+expr : '!' e1=expr          # Not
+     | e1=expr '&&' e2=expr # And
+     | e1=expr '||' e2=expr # Or
+     | c=CONST              # Constant
+     | x=IDENTIFIER         # Variable
      ;
 
 IDENTIFIER : [a-zA-Z_] [a-zA-Z0-9_]*;

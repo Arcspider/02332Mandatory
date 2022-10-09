@@ -35,7 +35,8 @@ public class main {
 
 	// Construct an interpreter and run it on the parse tree
 	Interpreter interpreter = new Interpreter();
-	Double result=interpreter.visit(parseTree);
+	Expr result=interpreter.visit(parseTree);
+	System.out.println("The result is: "+result.eval())
     }
 }
 
@@ -46,8 +47,10 @@ public class main {
 
 class Interpreter extends AbstractParseTreeVisitor<Double> implements lightVisitor<Double> {
 
-    public Double visitStart(lightParser.StartContext ctx){return null;};
+    public Expr visitStart(lightParser.StartContext ctx){return visit(ctx.e1);};
+	public Expr visitSequence(lightParser.SequenceContext ctx){
+	}
     //public Double visitExpr(implParser.ExprContext ctx){return null;};
-
+	
 }
 

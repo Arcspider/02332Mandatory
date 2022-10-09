@@ -1,4 +1,4 @@
-// Generated from C:/Users/soren/IdeaProjects/02332Mandatory/src\light.g4 by ANTLR 4.10.1
+// Generated from C:/Users/hayda/Documents/IntelliJ/02332Mandatory/src\light.g4 by ANTLR 4.10.1
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -97,33 +97,63 @@ public interface lightListener extends ParseTreeListener {
 	 */
 	void exitSimulate(lightParser.SimulateContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link lightParser#command}.
+	 * Enter a parse tree produced by the {@code Not}
+	 * labeled alternative in {@link lightParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterCommand(lightParser.CommandContext ctx);
+	void enterNot(lightParser.NotContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link lightParser#command}.
+	 * Exit a parse tree produced by the {@code Not}
+	 * labeled alternative in {@link lightParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitCommand(lightParser.CommandContext ctx);
+	void exitNot(lightParser.NotContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link lightParser#block}.
+	 * Enter a parse tree produced by the {@code Variable}
+	 * labeled alternative in {@link lightParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterBlock(lightParser.BlockContext ctx);
+	void enterVariable(lightParser.VariableContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link lightParser#block}.
+	 * Exit a parse tree produced by the {@code Variable}
+	 * labeled alternative in {@link lightParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitBlock(lightParser.BlockContext ctx);
+	void exitVariable(lightParser.VariableContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link lightParser#expr}.
+	 * Enter a parse tree produced by the {@code Or}
+	 * labeled alternative in {@link lightParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpr(lightParser.ExprContext ctx);
+	void enterOr(lightParser.OrContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link lightParser#expr}.
+	 * Exit a parse tree produced by the {@code Or}
+	 * labeled alternative in {@link lightParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpr(lightParser.ExprContext ctx);
+	void exitOr(lightParser.OrContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Constant}
+	 * labeled alternative in {@link lightParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterConstant(lightParser.ConstantContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Constant}
+	 * labeled alternative in {@link lightParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitConstant(lightParser.ConstantContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code And}
+	 * labeled alternative in {@link lightParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterAnd(lightParser.AndContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code And}
+	 * labeled alternative in {@link lightParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitAnd(lightParser.AndContext ctx);
 }
