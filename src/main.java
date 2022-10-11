@@ -51,10 +51,10 @@ class Interpreter extends AbstractParseTreeVisitor<AST> implements lightVisitor<
 	public AST visitSequence(lightParser.SequenceContext ctx){ return visit(ctx.e1)
 	}
 	public AST visitOr(lightParser.OrContext ctx){return new Or(visit(ctx.e1),visit(ctx.e2))}
-	public AST visitNot(lightParser.NotContext ctx){return new Or(visit(ctx.e1))}
-	public AST visitAnd(lightParser.AndContext ctx){return new Or(visit(ctx.e1),visit(ctx.e2))}
+	public AST visitNot(lightParser.NotContext ctx){return new Not(visit(ctx.e1))}
+	public AST visitAnd(lightParser.AndContext ctx){return new And(visit(ctx.e1),visit(ctx.e2))}
 	public AST visitParantheses(lightParser.ParanthesesContext ctx){return visit(ctx.e1)}
-	public AST visitConstant(lightParser.ParanthesesContext ctx){return new Constant(Integer.parseInt(ctx.c.getText()));}
+	public AST visitConstant(lightParser.ConstantContext ctx){return new Constant(Integer.parseInt(ctx.c.getText()));}
 	public AST visitVariable(lightParser.VariableContext ctx){return new Variable(ctx.x.getText());}
 	//public AST visitUpdate(lightParser.UpdateContext ctx{return visit(ctx)})
 

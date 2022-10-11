@@ -1,29 +1,18 @@
 grammar light;
 
-start : hardware inputs outputs latches+ update rules* simulate* EOF;
+start : '.hardware' nameH=IDENTIFIER '.inputs' nameIn=IDENTIFIER* '.outputs' nameOut=IDENTIFIER* latch+ '.update' updateDec* '.simulate' simulate* EOF;
 
-hardware: '.hardware' name=IDENTIFIER ;
+latch: '.latch' name1=IDENTIFIER '->' name2=IDENTIFIER;
 
-inputs: '.inputs' name=IDENTIFIER*;
+updateDec: name=IDENTIFIER '=' expr*;
 
-outputs: '.outputs' name=IDENTIFIER*;
-
-latches: '.latch' latchOP;
-
-rules: name=IDENTIFIER '=' expr;
-
-update: '.update';
-
-latchOP : name1=IDENTIFIER '->' name2=IDENTIFIER;
-
-simulate: '.simulate' rules expr*;
+simulate:  name=IDENTIFIER '=' CONST;
 
 
 expr :'(' e1=expr ')'       # Parentheses
      |'!' e1=expr           # Not
      | e1=expr '&&' e2=expr # And
      | e1=expr '||' e2=expr # Or
-     | c=CONST              # Constant
      | x=IDENTIFIER         # Variable
      ;
 
