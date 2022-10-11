@@ -7,7 +7,7 @@ public class prettyLightVisitor extends lightBaseVisitor{
 
     @Override
     public AST visitStart(lightParser.StartContext ctx) {
-        return visitChildren(ctx.name);
+        return visitChildren(ctx);
     }
 
     @Override
