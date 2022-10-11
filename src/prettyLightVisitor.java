@@ -3,7 +3,8 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.RuleNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-public class prettyLightVisitor implements lightVisitor {
+public class prettyLightVisitor extends lightBaseVisitor{
+
     @Override
     public AST visitStart(lightParser.StartContext ctx) {
         return visitChildren(ctx.name);

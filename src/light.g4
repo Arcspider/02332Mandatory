@@ -1,6 +1,6 @@
 grammar light;
 
-start : hardware inputs outputs latches update rules* simulate* EOF;
+start : hardware inputs outputs latches+ update rules* simulate* EOF;
 
 hardware: '.hardware' name=IDENTIFIER ;
 
@@ -19,7 +19,8 @@ latchOP : name1=IDENTIFIER '->' name2=IDENTIFIER;
 simulate: '.simulate' rules expr*;
 
 
-expr : '!' e1=expr          # Not
+expr :'(' e1=expr ')'       # Parentheses
+     |'!' e1=expr           # Not
      | e1=expr '&&' e2=expr # And
      | e1=expr '||' e2=expr # Or
      | c=CONST              # Constant

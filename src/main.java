@@ -45,11 +45,19 @@ public class main {
 // This is parameterized over a return type "<T>" which is in our case
 // simply a Double.
 
-class Interpreter extends AbstractParseTreeVisitor<Double> implements lightVisitor<Double> {
-
-    public Expr visitStart(lightParser.StartContext ctx){return visit(ctx.e1);};
-	public Expr visitSequence(lightParser.SequenceContext ctx){
+class Interpreter extends AbstractParseTreeVisitor<AST> implements lightVisitor<AST> {
+	//Section Based on impl week 4
+    public AST visitStart(lightParser.StartContext ctx){return visit(ctx.e1);};
+	public AST visitSequence(lightParser.SequenceContext ctx){ return visit(ctx.e1)
 	}
+	public AST visitOr(lightParser.OrContext ctx){return new Or(visit(ctx.e1),visit(ctx.e2))}
+	public AST visitNot(lightParser.NotContext ctx){return new Or(visit(ctx.e1))}
+	public AST visitAnd(lightParser.AndContext ctx){return new Or(visit(ctx.e1),visit(ctx.e2))}
+	public AST visitParantheses(lightParser.ParanthesesContext ctx){return visit(ctx.e1)}
+	public AST visitConstant(lightParser.ParanthesesContext ctx){return new Constant(Integer.parseInt(ctx.c.getText()));}
+	public AST visitVariable(lightParser.VariableContext ctx){return new Variable(ctx.x.getText());}
+	//public AST visitUpdate(lightParser.UpdateContext ctx{return visit(ctx)})
+
     //public Double visitExpr(implParser.ExprContext ctx){return null;};
 	
 }
