@@ -9,7 +9,7 @@ import java.util.List;
 public abstract class AST{};
 
 abstract class Expr extends AST{
-    abstract public void eval(Environment env);
+    abstract public Boolean eval(Environment env);
 }
 
 //class Sequence extends Command{
@@ -27,7 +27,7 @@ class Assignment extends Expr{
     Expr e;
     Assignment(String varname, Expr e){ this.varname=varname; this.e=e;}
     public void eval(Environment env){
-	env.setVariable(varname,e.eval(env));
+        env.setVariable(varname,e.eval(env));
     }
 }
 
@@ -36,17 +36,15 @@ class Output extends Expr{
     Expr e;
     Output(Expr e){ this.e=e;}
     public void eval(Environment env){
-	System.out.println(e.eval(env));
+        System.out.println(e.eval(env));
     }
 }
 
-abstract class Condition extends AST{
-    abstract public Boolean eval(Environment env);
-};
 
 
 
-class And extends Condition{
+
+class And extends Expr{
     Expr e1, e2;
     And(Expr e1, Expr e2){this.e1=e1; this.e2=e2;}
     public Boolean eval(Environment env){
@@ -54,13 +52,18 @@ class And extends Condition{
     };
 }
 
-class Or extends  Condition{
-    xpr e1, e2;
+class Or extends  Expr{
+    Expr e1, e2;
     Or(Expr e1, Expr e2){this.e1=e1; this.e2=e2;}
     public Boolean eval(Environment env){
         return e1.eval(env) || e2.eval(env);
     };
+}
 
+class Not extends Expr{
+    Expr e1;
+    Not(Expr e1){this.e1=e1;}
+    public Boolean eval(Enviroment env){return ! e1.eval(env)}
 }
 class Start extends AST{
     String name;
@@ -69,7 +72,7 @@ class Start extends AST{
 }
 
 class Circuit extends AST{
-    private Trace[] inputTraces; //Not sure, just trying something
+    private Trace[] inputTraces;
     private Trace[] outputTraces;
     private Integer input, output;
     public void initialize(){
@@ -84,10 +87,15 @@ class Circuit extends AST{
         initialize();
     }
 }
-public class UpdateDec extends AST{
+class UpdateDec extends AST{
+    String name;
+    Expr e1;
 
+    public void eval(Environment env){
+        env.setVariable(name,e1.eval(env));
+    }
 }
-    class Latch extends AST{
+class Latch extends AST{
     private Boolean input;
     private Boolean output;
 
@@ -99,7 +107,7 @@ public class UpdateDec extends AST{
         this.output = this.input;
     }
 }
-    class Trace extends AST{
+class Trace extends AST{
     private String name;
     private boolean[] signalValue; //bool array
 

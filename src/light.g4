@@ -4,7 +4,7 @@ start : '.hardware' nameH=IDENTIFIER '.inputs' nameIn=IDENTIFIER* '.outputs' nam
 
 latch: '.latch' name1=IDENTIFIER '->' name2=IDENTIFIER;
 
-updateDec: name=IDENTIFIER '=' expr*;
+updateDec: name=IDENTIFIER '=' expr;
 
 simulate:  name=IDENTIFIER '=' CONST;
 
