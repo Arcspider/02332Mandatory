@@ -1,4 +1,4 @@
-// Generated from C:/Users/hayda/Documents/IntelliJ/02332Mandatory/src\light.g4 by ANTLR 4.10.1
+// Generated from C:/Users/Gusta/IdeaProjects/02332Mandatory/src\light.g4 by ANTLR 4.9.1
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -98,4 +98,11 @@ public interface lightVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitAnd(lightParser.AndContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code Parentheses}
+	 * labeled alternative in {@link lightParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitParentheses(lightParser.ParenthesesContext ctx);
 }

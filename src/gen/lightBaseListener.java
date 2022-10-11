@@ -1,4 +1,4 @@
-// Generated from C:/Users/hayda/Documents/IntelliJ/02332Mandatory/src\light.g4 by ANTLR 4.10.1
+// Generated from C:/Users/Gusta/IdeaProjects/02332Mandatory/src\light.g4 by ANTLR 4.9.1
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -178,6 +178,18 @@ public class lightBaseListener implements lightListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitAnd(lightParser.AndContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterParentheses(lightParser.ParenthesesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitParentheses(lightParser.ParenthesesContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

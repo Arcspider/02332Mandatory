@@ -1,4 +1,12 @@
 public class Latch{
-    private String input;
-    private String output;
+    private Boolean input;
+    private Boolean output;
+
+
+    private void initialize(){
+        this.output = 0;
+    }
+    private void nextCycle(){
+        this.output = this.input;
+    }
 }
