@@ -56,6 +56,7 @@ class Interpreter extends AbstractParseTreeVisitor<AST> implements lightVisitor<
 	public AST visitParantheses(lightParser.ParanthesesContext ctx){return visit(ctx.e1)}
 	public AST visitConstant(lightParser.ConstantContext ctx){return new Constant(Integer.parseInt(ctx.c.getText()));}
 	public AST visitVariable(lightParser.VariableContext ctx){return new Variable(ctx.x.getText());}
+	public AST visitStart(lightParser.VariableContext ctx){return new Start(ctx.)}
 	//public AST visitUpdate(lightParser.UpdateContext ctx{return visit(ctx)})
 
     //public Double visitExpr(implParser.ExprContext ctx){return null;};

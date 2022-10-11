@@ -62,4 +62,52 @@ class Or extends  Condition{
     };
 
 }
+class Start extends AST{
+    String name;
+    //List of inputs ???
+
+}
+
+class Circuit extends AST{
+    private Trace[] inputTraces; //Not sure, just trying something
+    private Trace[] outputTraces;
+    private Integer input, output;
+    public void initialize(){
+        for (int i = 0; i < inputTraces.length-1; i++){
+            input = inputTraces[i]
+        }
+    }
+    public void nextCycle(){
+
+    }
+    public void runSimulator(int input){
+        initialize();
+    }
+}
+public class UpdateDec extends AST{
+
+}
+    class Latch extends AST{
+    private Boolean input;
+    private Boolean output;
+
+
+    private void initialize(){
+        this.output = 0;
+    }
+    private void nextCycle(){
+        this.output = this.input;
+    }
+}
+    class Trace extends AST{
+    private String name;
+    private boolean[] signalValue; //bool array
+
+    public String toString(){
+        for( int bool: signalValue){
+            System.out.println(bool);
+        }
+    }
+}
+
 
