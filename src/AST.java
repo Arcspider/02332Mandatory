@@ -3,8 +3,7 @@ import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 import org.antlr.v4.runtime.CharStreams;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public abstract class AST{};
 
@@ -50,7 +49,7 @@ class Not extends Expr{
 }
 class Start extends AST{
     String name;
-    //List of inputs ???
+
 
 }
 class Circuit extends AST{
@@ -73,14 +72,18 @@ class Circuit extends AST{
 class UpdateDec extends AST{
     String varname;
     Expr e1;
-    UpdateDec(String varname, Expr e){ this.varname=varname; this.e=e;}
+    UpdateDec(String varname, Expr e1){ this.varname=varname; this.e1=e1;}
     public void eval(Environment env){
         env.setVariable(varname,e1.eval(env));
     }
 }
 class Latch extends AST{
-    private Boolean input;
-    private Boolean output;
+   String id1, id2;
+   public Latch(Token id1, Token id2){
+       this.id1= id1.getText();
+       this.id2=id2.getText();
+   }
+
 
 
     private void initialize(){
@@ -89,7 +92,10 @@ class Latch extends AST{
     private void nextCycle(){
         this.output = this.input;
     }
+
+
 }
+
 class Trace extends AST{
     private String name;
     private boolean[] signalValue; //bool array

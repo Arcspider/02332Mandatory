@@ -47,9 +47,9 @@ public class main {
 
 class Interpreter extends AbstractParseTreeVisitor<AST> implements lightVisitor<AST> {
 	//Section Based on impl week 4
-    public AST visitStart(lightParser.StartContext ctx){return visit(ctx.e1);};
+    public AST visitStart(lightParser.StartContext ctx){}
 
-	public AST visitLatch(lightParser.LatchContext ctx) {return new Latch((Expr)visit(ctx.e1),(Expr)visit(ctx.e2));}
+	public AST visitLatch(lightParser.LatchContext ctx) {return new Latch(ctx.name1, ctx.name2);}
 
 	@Override
 	public AST visitUpdateDec(lightParser.UpdateDecContext ctx) {
