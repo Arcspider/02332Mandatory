@@ -22,7 +22,7 @@ abstract class Expr extends AST{
 //}
 
 
-class Output extends Expr{
+class Output extends AST{
     Expr e;
     Output(Expr e){ this.e=e;}
     public void eval(Environment env){
@@ -46,7 +46,7 @@ class Or extends  Expr{
 class Not extends Expr{
     Expr e1;
     Not(Expr e1){this.e1=e1;}
-    public Boolean eval(Enviroment env){return ! e1.eval(env)}
+    public Boolean eval(Environment env){return ! e1.eval(env);}
 }
 class Start extends AST{
     String name;
@@ -56,11 +56,12 @@ class Start extends AST{
 class Circuit extends AST{
     private Trace[] inputTraces;
     private Trace[] outputTraces;
-    private Integer input, output;
+    private boolean[] input, output;
     public void initialize(){
         for (int i = 0; i < inputTraces.length-1; i++){
-            input = inputTraces[i]
+            input = inputTraces[i].getSV();
         }
+        System.out.println(input);
     }
     public void nextCycle(){
 
@@ -70,11 +71,11 @@ class Circuit extends AST{
     }
 }
 class UpdateDec extends AST{
-    String name;
+    String varname;
     Expr e1;
     UpdateDec(String varname, Expr e){ this.varname=varname; this.e=e;}
     public void eval(Environment env){
-        env.setVariable(name,e1.eval(env));
+        env.setVariable(varname,e1.eval(env));
     }
 }
 class Latch extends AST{
@@ -83,7 +84,7 @@ class Latch extends AST{
 
 
     private void initialize(){
-        this.output = 0;
+        this.output = false;
     }
     private void nextCycle(){
         this.output = this.input;
@@ -94,9 +95,13 @@ class Trace extends AST{
     private boolean[] signalValue; //bool array
 
     public String toString(){
-        for( int bool: signalValue){
+        for( boolean bool: signalValue){
             System.out.println(bool);
         }
+        return null;
+    }
+    public boolean[] getSV(){
+        return signalValue;
     }
 }
 

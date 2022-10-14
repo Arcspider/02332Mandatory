@@ -35,8 +35,8 @@ public class main {
 
 	// Construct an interpreter and run it on the parse tree
 	Interpreter interpreter = new Interpreter();
-	Expr result=interpreter.visit(parseTree);
-	System.out.println("The result is: "+result.eval())
+	Expr result= (Expr) interpreter.visit(parseTree);
+	System.out.println("The result is: "+result.eval(new Environment()));
     }
 }
 
@@ -48,14 +48,12 @@ public class main {
 class Interpreter extends AbstractParseTreeVisitor<AST> implements lightVisitor<AST> {
 	//Section Based on impl week 4
     public AST visitStart(lightParser.StartContext ctx){return visit(ctx.e1);};
-	public AST visitSequence(lightParser.SequenceContext ctx){ return visit(ctx.e1)
-	}
-	public AST visitOr(lightParser.OrContext ctx){return new Or(visit(ctx.e1),visit(ctx.e2))}
-	public AST visitNot(lightParser.NotContext ctx){return new Not(visit(ctx.e1))}
-	public AST visitAnd(lightParser.AndContext ctx){return new And(visit(ctx.e1),visit(ctx.e2))}
-	public AST visitParantheses(lightParser.ParanthesesContext ctx){return visit(ctx.e1)}
-	public AST visitConstant(lightParser.ConstantContext ctx){return new Constant(Integer.parseInt(ctx.c.getText()));}
-	public AST visitVariable(lightParser.VariableContext ctx){return new Variable(ctx.x.getText());}
+	public AST visitOr(lightParser.OrContext ctx){return new Or((Expr)visit(ctx.e1),(Expr)visit(ctx.e2));}
+	public AST visitNot(lightParser.NotContext ctx){return new Not((Expr)visit(ctx.e1));}
+	public AST visitAnd(lightParser.AndContext ctx){return new And((Expr)visit(ctx.e1),(Expr)visit(ctx.e2));}
+//	public AST visitParantheses(lightParser.ParanthesesContext ctx){return visit(ctx.e1)}
+//	public AST visitConstant(lightParser.ConstantContext ctx){return new Constant(Integer.parseInt(ctx.c.getText()));}
+//	public AST visitVariable(lightParser.VariableContext ctx){return new Variable(ctx.x.getText());}
 	public AST visitStart(lightParser.VariableContext ctx){return new Start(ctx.)}
 	//public AST visitUpdate(lightParser.UpdateContext ctx{return visit(ctx)})
 
