@@ -22,16 +22,6 @@ abstract class Expr extends AST{
 //}
 
 
-class Assignment extends Expr{
-    String varname;
-    Expr e;
-    Assignment(String varname, Expr e){ this.varname=varname; this.e=e;}
-    public void eval(Environment env){
-        env.setVariable(varname,e.eval(env));
-    }
-}
-
-
 class Output extends Expr{
     Expr e;
     Output(Expr e){ this.e=e;}
@@ -39,11 +29,6 @@ class Output extends Expr{
         System.out.println(e.eval(env));
     }
 }
-
-
-
-
-
 class And extends Expr{
     Expr e1, e2;
     And(Expr e1, Expr e2){this.e1=e1; this.e2=e2;}
@@ -51,7 +36,6 @@ class And extends Expr{
         return e1.eval(env) && e2.eval(env);
     };
 }
-
 class Or extends  Expr{
     Expr e1, e2;
     Or(Expr e1, Expr e2){this.e1=e1; this.e2=e2;}
@@ -59,7 +43,6 @@ class Or extends  Expr{
         return e1.eval(env) || e2.eval(env);
     };
 }
-
 class Not extends Expr{
     Expr e1;
     Not(Expr e1){this.e1=e1;}
@@ -70,7 +53,6 @@ class Start extends AST{
     //List of inputs ???
 
 }
-
 class Circuit extends AST{
     private Trace[] inputTraces;
     private Trace[] outputTraces;
@@ -90,7 +72,7 @@ class Circuit extends AST{
 class UpdateDec extends AST{
     String name;
     Expr e1;
-
+    UpdateDec(String varname, Expr e){ this.varname=varname; this.e=e;}
     public void eval(Environment env){
         env.setVariable(name,e1.eval(env));
     }
