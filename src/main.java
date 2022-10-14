@@ -48,16 +48,32 @@ public class main {
 class Interpreter extends AbstractParseTreeVisitor<AST> implements lightVisitor<AST> {
 	//Section Based on impl week 4
     public AST visitStart(lightParser.StartContext ctx){return visit(ctx.e1);};
+
+	public AST visitLatch(lightParser.LatchContext ctx) {return new Latch((Expr)visit(ctx.e1),(Expr)visit(ctx.e2));}
+
+	@Override
+	public AST visitUpdateDec(lightParser.UpdateDecContext ctx) {
+		return null;
+	}
+
+	@Override
+	public AST visitSimulate(lightParser.SimulateContext ctx) {
+		return null;
+	}
+
 	public AST visitOr(lightParser.OrContext ctx){return new Or((Expr)visit(ctx.e1),(Expr)visit(ctx.e2));}
 	public AST visitNot(lightParser.NotContext ctx){return new Not((Expr)visit(ctx.e1));}
-	public AST visitAnd(lightParser.AndContext ctx){return new And((Expr)visit(ctx.e1),(Expr)visit(ctx.e2));}
-//	public AST visitParantheses(lightParser.ParanthesesContext ctx){return visit(ctx.e1)}
-//	public AST visitConstant(lightParser.ConstantContext ctx){return new Constant(Integer.parseInt(ctx.c.getText()));}
-//	public AST visitVariable(lightParser.VariableContext ctx){return new Variable(ctx.x.getText());}
-	public AST visitStart(lightParser.VariableContext ctx){return new Start(ctx.)}
-	//public AST visitUpdate(lightParser.UpdateContext ctx{return visit(ctx)})
 
-    //public Double visitExpr(implParser.ExprContext ctx){return null;};
-	
+	@Override
+	public AST visitVariable(lightParser.VariableContext ctx) {
+		return null;
+	}
+
+	public AST visitAnd(lightParser.AndContext ctx){return new And((Expr)visit(ctx.e1),(Expr)visit(ctx.e2));}
+
+	@Override
+	public AST visitParentheses(lightParser.ParenthesesContext ctx) {
+		return null;
+	}
 }
 
