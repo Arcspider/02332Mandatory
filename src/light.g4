@@ -1,6 +1,6 @@
 grammar light;
 
-start : '.hardware' nameH=IDENTIFIER '.inputs' nameIn=IDENTIFIER* '.outputs' nameOut=IDENTIFIER* latch+ '.update' updateDec* '.simulate' simulate* EOF;
+start : '.hardware' nameH=IDENTIFIER '.inputs' nameIn=IDENTIFIER* '.outputs' nameOut=IDENTIFIER* latch+ '.update' updateDec* '.simulate' sims+=simulate* EOF;
 
 latch: '.latch' name1=IDENTIFIER '->' name2=IDENTIFIER;
 

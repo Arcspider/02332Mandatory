@@ -10,13 +10,13 @@ main.class:	$(SRCFILES) $(GENERATED) light.g4
 	javac  $(SRCFILES) $(GENERATED)
 
 implLexer.java:	light.g4
-	$(antlr4) -visitor impl.g4
+	$(antlr4) -visitor light.g4
 
-implLexer.class: implLexer.java
+implLexer.class: lightLexer.java
 	javac $(GENERATED)
 
 test:	main.class input.txt
 	java main input.txt
 
-tree:	implLexer.class light.g4 input.txt
-	$(grun) impl start -gui -tokens input.txt
+tree:	lightLexer.class light.g4 input.txt
+	$(grun) light start -gui -tokens input.txt
