@@ -79,6 +79,8 @@ class UpdateDec extends AST{
 }
 class Latch extends AST{
    String id1, id2;
+
+   Boolean input, output;
    public Latch(Token id1, Token id2){
        this.id1= id1.getText();
        this.id2=id2.getText();

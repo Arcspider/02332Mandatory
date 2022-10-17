@@ -47,7 +47,9 @@ public class main {
 
 class Interpreter extends AbstractParseTreeVisitor<AST> implements lightVisitor<AST> {
 	//Section Based on impl week 4
-    public AST visitStart(lightParser.StartContext ctx){}
+    public AST visitStart(lightParser.StartContext ctx){
+		System.out.println("Start er her");
+		return visitChildren(ctx);}
 
 	public AST visitLatch(lightParser.LatchContext ctx) {return new Latch(ctx.name1, ctx.name2);}
 

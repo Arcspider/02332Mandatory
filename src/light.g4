@@ -1,6 +1,6 @@
 grammar light;
 
-start : '.hardware' nameH=IDENTIFIER '.inputs' nameIn=IDENTIFIER* '.outputs' nameOut=IDENTIFIER* latch+ '.update' updateDec* '.simulate' sims+=simulate* EOF;
+start : '.hardware' nameH=IDENTIFIER '.inputs' nameIn=IDENTIFIER* '.outputs' nameOut=IDENTIFIER* latches+=latch+ '.update' updateDec* '.simulate' sims+=simulate* EOF;
 
 latch: '.latch' name1=IDENTIFIER '->' name2=IDENTIFIER;
 
@@ -20,6 +20,6 @@ IDENTIFIER : [a-zA-Z_] [a-zA-Z0-9_]*;
 
 CONST : [0-1]+ ;
 
-HVIDRUM : [ \t\n]+ -> skip ;
+HVIDRUM : [ \t\n\r]+ -> skip ;
 KOMMENTAR : '//' ~[\n]* -> skip ;
 MULTILINECOMMENTS :  '/*'  ( '*'~[/] | ~[*]  )* '*/' -> skip;
