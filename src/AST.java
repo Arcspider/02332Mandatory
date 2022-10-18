@@ -86,8 +86,6 @@ class Latch extends AST{
        this.id2=id2.getText();
    }
 
-
-
     private void initialize(){
         this.output = false;
     }

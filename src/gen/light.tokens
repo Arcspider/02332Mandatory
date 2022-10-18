@@ -19,11 +19,11 @@ MULTILINECOMMENTS=18
 '.hardware'=1
 '.inputs'=2
 '.outputs'=3
-'.latch'=4
-'='=5
-'.update'=6
+'.update'=4
+'.simulate'=5
+'.latch'=6
 '->'=7
-'.simulate'=8
+'='=8
 '('=9
 ')'=10
 '!'=11

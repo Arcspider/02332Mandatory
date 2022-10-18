@@ -36,7 +36,7 @@ public class main {
 	// Construct an interpreter and run it on the parse tree
 	Interpreter interpreter = new Interpreter();
 	Expr result= (Expr) interpreter.visit(parseTree);
-	System.out.println("The result is: "+result.eval(new Environment()));
+//	System.out.println("The result is: "+result.eval(new Environment()));
     }
 }
 
@@ -51,9 +51,19 @@ class Interpreter extends AbstractParseTreeVisitor<AST> implements lightVisitor<
 		System.out.println("Start er her");
 		return visitChildren(ctx);}
 
-	public AST visitLatch(lightParser.LatchContext ctx) {return new Latch(ctx.name1, ctx.name2);}
+	public AST visitLatch(lightParser.LatchContext ctx) {
+		System.out.println("Latch er her");
+		return new Latch(ctx.name1, ctx.name2);}
 
-	@Override
+//	public AST visitCommands(implParser.CommandsContext ctx){
+//		List<Command> cmds = new ArrayList<Command>();
+//		for(implParser.CommandContext c : ctx.cmds){
+//			cmds.add((Command) visit(c));
+//		}
+
+
+
+		@Override
 	public AST visitUpdateDec(lightParser.UpdateDecContext ctx) {
 		return null;
 	}

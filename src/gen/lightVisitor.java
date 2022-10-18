@@ -1,4 +1,4 @@
-// Generated from C:/Users/Gusta/IdeaProjects/02332Mandatory/src\light.g4 by ANTLR 4.9.1
+// Generated from C:/Users/soren/IdeaProjects/02332Mandatory/src\light.g4 by ANTLR 4.10.1
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -16,47 +16,17 @@ public interface lightVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStart(lightParser.StartContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link lightParser#hardware}.
+	 * Visit a parse tree produced by {@link lightParser#latch}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitHardware(lightParser.HardwareContext ctx);
+	T visitLatch(lightParser.LatchContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link lightParser#inputs}.
+	 * Visit a parse tree produced by {@link lightParser#updateDec}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitInputs(lightParser.InputsContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link lightParser#outputs}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitOutputs(lightParser.OutputsContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link lightParser#latches}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLatches(lightParser.LatchesContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link lightParser#rules}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitRules(lightParser.RulesContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link lightParser#update}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitUpdate(lightParser.UpdateContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link lightParser#latchOP}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLatchOP(lightParser.LatchOPContext ctx);
+	T visitUpdateDec(lightParser.UpdateDecContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link lightParser#simulate}.
 	 * @param ctx the parse tree
@@ -84,13 +54,6 @@ public interface lightVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitOr(lightParser.OrContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code Constant}
-	 * labeled alternative in {@link lightParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitConstant(lightParser.ConstantContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code And}
 	 * labeled alternative in {@link lightParser#expr}.
